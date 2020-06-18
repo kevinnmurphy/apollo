@@ -1,0 +1,7 @@
+<h2><%=@character.name%></h2>
+<p><%=@character.stats%></p>
+
+<form method="post" action="/characters/<%= @character.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE" />
+  <input type="submit" value="delete" />
+</form>

@@ -1,0 +1,9 @@
+<h1>Welcome, <%= @user.name %>!</h1>
+
+<a href="teams/show">
+
+
+<form action="/users/<%= @user.id %>" method="POST">
+    <input type="hidden" value="DELETE" method="POST">
+    <input type="hidden" value="DELETE" method="POST">
+</form>
