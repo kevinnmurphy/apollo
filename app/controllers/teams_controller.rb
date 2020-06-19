@@ -12,15 +12,15 @@ class TeamsController < ApplicationController
         erb :"teams/new"
         
     end
-    
-    get '/teams/:id' do
-        @team = Team.find(params[:id])
-        erb :"teams/show"
-    end 
 
     post '/teams' do
         team = Team.create(params)
         redirect "/teams/#{Team.id}"
+    end  
+
+    get '/teams/:id' do
+        @team = Team.find(params[:id])
+        erb :"teams/show"
     end 
 
     get '/teams/:id/edit' do

@@ -1,10 +1,33 @@
+<h1>Create A New Character</h1>
+
+<%= @error %>
 <form action="/characters" method="POST">
-  <label for="title">Title</label>
-  <input type="text" name="name" />
-  <%# create nested has for data to mass assign %>
-  <%# <input type="text" id="character_name" name="character[name]" /> %>
+  <label for="name">Character Name: </label>
+  <input type="text" id="character_name" name="name" />
   <br>
-  <label for="content">Content</label>
-  <p><input type="textarea" name="content" /></p>
-  <input type="submit" value="submit" />
+  <label for="class">Class: </label>
+  <input type="radial" name="class" />
+  <br>
+  <label for="ability">Ability: </label>
+  <input type="text" name="ability" />
+  <br>
+  <input type="submit" value="Create Character" />
+  <br>
+  <br>
+  <h4>Select an existing team for your character, or create a new one below:</h4>
+ 
+  <h3>Existing Teams</h3>
+  <% @teams.each do |team| %>
+    <input type="checkbox" name="[team_ids][]" value="<%= team.id %>" <%='checked' if @teams.characters.include?(character) %>><%= character.name %>
+      <br>
+  <% end %>
+  <br>
+
+  <h3>New Team</h3>
+  <label>Team Name: </label>
+  <br>
+  <input type="text" name="team[name]" id="team_name">
+  <br>
+
+  <input type="submit" value="Create Team and Character">
 </form>

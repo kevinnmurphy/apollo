@@ -22,8 +22,8 @@ class CreateTables < ActiveRecord::Migration[5.2]
     end
 
     create_table :team_characters do |t|
-      t.integer :team_id
-      t.integer :character_id
+      t.integer :teams_id
+      t.integer :characters_id
 
       t.belongs_to :characters
       t.belongs_to :teams

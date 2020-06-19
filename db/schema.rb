@@ -29,10 +29,8 @@ ActiveRecord::Schema.define(version: 2020_06_14_153407) do
   end
 
   create_table "team_characters", force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "character_id"
-    t.integer "characters_id"
     t.integer "teams_id"
+    t.integer "characters_id"
     t.index ["characters_id"], name: "index_team_characters_on_characters_id"
     t.index ["teams_id"], name: "index_team_characters_on_teams_id"
   end

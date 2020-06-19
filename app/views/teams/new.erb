@@ -1,1 +1,12 @@
-Team New
+<h1>Create A New Team</h1>
+
+<%= @error %>
+<form action="/teams" method="POST">
+    <label for="name">Team Name: </label>
+    <input type="text" name="team[name]" required>
+    <br>
+    <label for="password">Description: </label>
+    <input type="textarea" name="team[description]" required>
+    <br>
+    <input type="submit" value="Make Team">
+</form>

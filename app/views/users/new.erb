@@ -4,6 +4,7 @@
 <%= @error %>
 <form action="/signup" method="POST">
     <label for="name">Username</label>
+    <%# create nested hash for data to mass assign %>
     <input type="text" name="user[name]" placeholder="username" required>
 
     <label for="email">Email</label>

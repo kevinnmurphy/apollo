@@ -8,6 +8,7 @@ class CharactersController < ApplicationController
     end
 
     get '/characters/new' do
+        @teams = Team.all
         @characters = Character.all
         erb :"characters/new"
         

@@ -1,7 +1,7 @@
 class EquipmentsController < ApplicationController
    
        get '/equipments' do
-           @equipments - Equipment.all
+           @equipments = Equipment.all
             erb :"/equipments/index"
        end
    
@@ -13,14 +13,14 @@ class EquipmentsController < ApplicationController
        end
    
        post '/equipments' do
-          # binding.pry
-          equipment = Equipment.find_or_create_by(params[:equipment])
-          character = Character.find_or_create_by(params[:character])
-          teams = Team.find(params[:teams])
-      
-          equipment.artist = artist
-          equipment.genres << genres
-          equipment.save
+        
+           equipment = Equipment.find_or_create_by(params[:equipment])
+           character = Character.find_or_create_by(params[:character])
+           teams = Team.find(params[:teams])
+       
+           equipment.character = character
+           equipment.teams << teams
+           equipment.save
        
         #  flash[:message] = "Successfully created equipment."
            redirect to "/equipments/#{equipment.slug}"
