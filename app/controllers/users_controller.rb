@@ -5,13 +5,13 @@ class UsersController < ApplicationController
 	end
 
 	post '/signup' do 
-		#params[:user] = params[:user].values.gsub(/[\<\>\/]/, "")
+		#sanitize
 		user = User.new(params[:user])
 		if user.save
 			#login
 			session[:user_id] = user.id
 	
-		 	redirect to "/users/show"
+		 	erb :'users/show'
 		else
 		 	@error = user.errors.full_messages.join(" - ")
 		 	erb :"users/new"

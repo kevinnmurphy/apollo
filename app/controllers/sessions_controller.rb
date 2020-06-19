@@ -4,23 +4,15 @@ class SessionsController < ApplicationController
 		erb :'sessions/login'
     end
     
-    post "/login" do
+	post "/login" do
 		user = User.find_by_name(params[:user][:name])
 		if user && user.authenticate(params[:user][:password])
 			session[:user_id] = user.id
-			erb :"sessions/success"
+			erb :"users/show"
 		else
-			redirect "/sessions/login"
+			redirect "/login"
 		end
     end
-
-	get "/success" do
-		if Helpers.logged_in?(session)
-			erb :success
-		else
-			redirect "/sessions/login"
-		end
-	end
 
 	get "/logout" do
 		session.clear

@@ -1,7 +1,7 @@
-<h1>Welcome, <%= @user.name %>!</h1>
+<h1>Welcome, <%= current_user.name %>!</h1>
 
 
-<form action="/users/<%= @user.id %>" method="POST">
+<form action="/users/<%= current_user.id %>" method="POST">
     <input type="hidden" value="DELETE" method="POST">
     <input type="hidden" value="DELETE" method="POST">
 </form>

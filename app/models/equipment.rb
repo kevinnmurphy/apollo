@@ -1,5 +1,5 @@
-class Equipment < ActiveRecord::Base
-    belongs_to :characters
+class Equip < ActiveRecord::Base
+    belongs_to :character
 
     validates :name, presence: true
     validates :name, uniqueness: true

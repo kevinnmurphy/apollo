@@ -69,3 +69,5 @@ post '/equipments' do
     @equipment.destroy
     redirect "equipments"
 end 
+
+#check sanitize input helper

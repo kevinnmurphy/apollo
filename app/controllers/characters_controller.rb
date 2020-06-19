@@ -1,9 +1,13 @@
 class CharactersController < ApplicationController
+    # before do 
+    #     login_required
+    # end
+
  #7 restful routes 
  #Create, Read, Update, Delete
 
     get '/characters' do
-        @characters - Character.all
+        @characters = Character.all
          erb :"characters/index"
     end
 
@@ -20,7 +24,6 @@ class CharactersController < ApplicationController
     end 
 
     post '/characters' do
-        binding.pry
         @team = Team.create(params[:team])
         # if !params[:character].empty?
         #     @team.characters << Character.create(params[:character])

@@ -14,32 +14,32 @@ ActiveRecord::Schema.define(version: 2020_06_14_153407) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.string "class"
+    t.string "klass"
     t.string "ability"
-    t.integer "users_id"
-    t.index ["users_id"], name: "index_characters_on_users_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
-  create_table "equipments", force: :cascade do |t|
+  create_table "equips", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "ability"
-    t.integer "characters_id"
-    t.index ["characters_id"], name: "index_equipments_on_characters_id"
+    t.integer "character_id"
+    t.index ["character_id"], name: "index_equips_on_character_id"
   end
 
   create_table "team_characters", force: :cascade do |t|
-    t.integer "teams_id"
-    t.integer "characters_id"
-    t.index ["characters_id"], name: "index_team_characters_on_characters_id"
-    t.index ["teams_id"], name: "index_team_characters_on_teams_id"
+    t.integer "character_id"
+    t.integer "team_id"
+    t.index ["character_id"], name: "index_team_characters_on_character_id"
+    t.index ["team_id"], name: "index_team_characters_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "users_id"
-    t.index ["users_id"], name: "index_teams_on_users_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,31 +10,28 @@ class CreateTables < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :description
 
-      t.belongs_to :users
+      t.belongs_to :user
     end
 
     create_table :characters do |t|
       t.string :name
-      t.string :class
+      t.string :klass
       t.string :ability
 
-      t.belongs_to :users
+      t.belongs_to :user
     end
 
     create_table :team_characters do |t|
-      t.integer :teams_id
-      t.integer :characters_id
-
-      t.belongs_to :characters
-      t.belongs_to :teams
+      t.belongs_to :character
+      t.belongs_to :team
     end
 
-    create_table :equipments do |t|
+    create_table :equips do |t|
       t.string :name
       t.string :description
       t.string :ability
 
-      t.belongs_to :characters
+      t.belongs_to :character
     end
   end
 end

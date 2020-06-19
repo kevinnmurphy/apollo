@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+    # before do 
+    #     login_required
+    # end
  #7 restful routes 
  #Create, Read, Update, Delete
 
@@ -10,11 +13,10 @@ class TeamsController < ApplicationController
     get '/teams/new' do
         @teams = Team.all
         erb :"teams/new"
-        
     end
 
     post '/teams' do
-        team = Team.create(params[:team])
+        team = current_user.teams.create(params[:team])
         redirect "/teams/#{params[:id]}"
     end  
 

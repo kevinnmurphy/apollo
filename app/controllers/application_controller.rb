@@ -9,9 +9,9 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    # make hidden session eith env gem later
+    # make hidden session eith env gem
+    set :session_secret, "supersecret"
     # set :session_secret, "#{ENV['SESSION_SECRET']}"
-    set :session_secret, "Secret"
   end
 
   get "/" do
@@ -38,6 +38,13 @@ class ApplicationController < Sinatra::Base
 
     def logout
       session.clear
+    end
+
+    #sanitize on patch and post
+    def sanitize_input(input)
+      input.transform_values! do |v|
+        v.gsub(/[\<\>\/]/, "")
+      end
     end
   
   end
