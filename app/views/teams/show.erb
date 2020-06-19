@@ -1,6 +1,9 @@
 <h2><%=@team.name%></h2>
 <p><%=@team.description%></p>
 <br>
+<%= @team.characters %>
+
+
 
 <form action='/teams/<%= @team.id %>/edit' method="GET">
     <input type="submit" value="Edit Team"/>
