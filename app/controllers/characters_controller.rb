@@ -20,9 +20,14 @@ class CharactersController < ApplicationController
     end 
 
     post '/characters' do
-        character = Character.create(params)
+        binding.pry
+        @team = Team.create(params[:team])
+        # if !params[:character].empty?
+        #     @team.characters << Character.create(params[:character])
+        # end
+        character = Character.create(params[:character])
         redirect "/characters/#{character.id}"
-    end 
+    end
 
     get '/characters/:id/edit' do
         @character = Character.find(params[:id])
@@ -30,7 +35,7 @@ class CharactersController < ApplicationController
     end 
     
     patch '/characters/:id' do
-        Character.find(params[:id]).update(title: params[:title], content: params[:content])
+        Character.find(params[:id]).update(params[:character])
         redirect "characters/#{params[:id]}"
     end 
     

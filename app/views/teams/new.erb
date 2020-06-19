@@ -3,10 +3,10 @@
 <%= @error %>
 <form action="/teams" method="POST">
     <label for="name">Team Name: </label>
-    <input type="text" name="team[name]" required>
+    <input type="text" name="name" required>
     <br>
     <label for="password">Description: </label>
-    <input type="textarea" name="team[description]" required>
+    <input type="textarea" name="description" required>
     <br>
     <input type="submit" value="Make Team">
 </form>

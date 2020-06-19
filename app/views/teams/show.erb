@@ -1,1 +1,12 @@
-Team Show
+<h2><%=@team.name%></h2>
+<p><%=@team.description%></p>
+<br>
+
+<form action='/teams/<%= @team.id %>/edit' method="GET">
+    <input type="submit" value="Edit Team"/>
+</form>
+
+<form method="post" action="/teams/<%= @team.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE" id="delete_action"/>
+  <input type="submit" value="Delete" />
+</form>

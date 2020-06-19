@@ -13,32 +13,32 @@ class EquipmentsController < ApplicationController
        end
    
        post '/equipments' do
-          # binding.pry
+        binding.pry
           equipment = Equipment.find_or_create_by(params[:equipment])
-          character = Character.find_or_create_by(params[:character])
-          teams = Team.find(params[:teams])
+          # character = Character.find_or_create_by(params[:character])
+          # teams = Team.find(params[:teams])
       
-          equipment.artist = artist
-          equipment.genres << genres
-          equipment.save
+          # equipment.artist = artist
+          # equipment.genres << genres
+          # equipment.save
        
         #  flash[:message] = "Successfully created equipment."
-           redirect to "/equipments/#{equipment.slug}"
+           redirect to "/equipments/#{equipment.id}"
        end
    
-       get '/equipments/:slug' do
-        @equipment = Equipment.find_by_slug(params[:slug])
+       get '/equipments/:id' do
+        @equipment = Equipment.find_by_id(params[:id])
         erb :"/equipments/show"
       end
     
-      get '/equipments/:slug/edit' do
-        @equipment = Equipment.find_by_slug(params[:slug])
+      get '/equipments/:id/edit' do
+        @equipment = Equipment.find_by_id(params[:id])
         @teams = Team.all
         erb :"/equipments/edit"
       end 
     
-      patch '/equipments/:slug' do 
-        equipment = Equipment.find_by_slug(params[:slug])
+      patch '/equipments/:id' do 
+        equipment = Equipment.find_by_id(params[:id])
         equipment.update(params[:equipment])
         equipment.teams = Team.find(params[:teams])
     
@@ -48,11 +48,11 @@ class EquipmentsController < ApplicationController
         end 
     
         # flash[:message] = "Successfully updated equipment."
-        redirect to "/equipments/#{equipment.slug}"
+        redirect to "/equipments/#{equipment.id}"
       end
 
       delete '/equipments/:id' do
-        @equipment = Equipment.find_by_slug(params[:slug])
+        @equipment = Equipment.find_by_id(params[:id])
         @equipment.destroy
         redirect "equipments"
     end 

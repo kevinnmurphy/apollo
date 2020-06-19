@@ -1,24 +1,25 @@
 <h1>Create A New Character</h1>
 
 <%= @error %>
+
 <form action="/characters" method="POST">
   <label for="name">Character Name: </label>
-  <input type="text" id="character_name" name="name" />
+  <input type="text" id="character_name" name="character[name]" />
   <br>
   <label for="class">Class: </label>
-  <input type="radial" name="class" />
+  <input type="text" name="character[class]" />
   <br>
   <label for="ability">Ability: </label>
-  <input type="text" name="ability" />
+  <input type="text" name="character[ability]" />
   <br>
   <input type="submit" value="Create Character" />
   <br>
   <br>
+
   <h4>Select an existing team for your character, or create a new one below:</h4>
- 
   <h3>Existing Teams</h3>
   <% @teams.each do |team| %>
-    <input type="checkbox" name="[team_ids][]" value="<%= team.id %>" <%='checked' if @teams.characters.include?(character) %>><%= character.name %>
+    <input type="checkbox" name="user[team_ids][]" id="<%= team.id %>" value="<%= team.id %>"%><%= team.name %><br>
       <br>
   <% end %>
   <br>
@@ -26,8 +27,8 @@
   <h3>New Team</h3>
   <label>Team Name: </label>
   <br>
-  <input type="text" name="team[name]" id="team_name">
+  <input type="text" name="team[name]">
   <br>
 
-  <input type="submit" value="Create Team and Character">
+  <input type="submit" value="Create Team">
 </form>

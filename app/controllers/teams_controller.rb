@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
  #Create, Read, Update, Delete
 
     get '/teams' do
-        @teams - Team.all
+        @teams = Team.all
          erb :"teams/index"
     end
 
@@ -14,8 +14,8 @@ class TeamsController < ApplicationController
     end
 
     post '/teams' do
-        team = Team.create(params)
-        redirect "/teams/#{Team.id}"
+        team = Team.create(params[:team])
+        redirect "/teams/#{params[:id]}"
     end  
 
     get '/teams/:id' do
@@ -29,7 +29,7 @@ class TeamsController < ApplicationController
     end 
     
     patch '/teams/:id' do
-        Team.find(params[:id]).update(name: params[:name], description: params[:description])
+        Team.find(params[:id]).update(params[:team])
         redirect "teams/#{params[:id]}"
     end 
     
