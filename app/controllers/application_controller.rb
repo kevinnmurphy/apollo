@@ -1,6 +1,3 @@
-require './config/environment'
-require 'rack-flash'
-
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   use Rack::Flash
@@ -20,7 +17,6 @@ class ApplicationController < Sinatra::Base
 
 
   helpers do
-  
 		def logged_in?
 			!!current_user
 		end
@@ -42,11 +38,8 @@ class ApplicationController < Sinatra::Base
 
     #sanitize on patch and post
     def sanitize_input(input)
-      input.transform_values! do |v|
-        v.gsub(/[\<\>\/]/, "")
-      end
+      input.transform_values! {|v| v.gsub(/[\<\>\/]/, "") }
     end
-  
   end
 
 end

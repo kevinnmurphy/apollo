@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 			#login
 			session[:user_id] = user.id
 	
-		 	erb :'users/show'
+		 	erb :'users/index'
 		else
 		 	@error = user.errors.full_messages.join(" - ")
 		 	erb :"users/new"
@@ -25,9 +25,12 @@ class UsersController < ApplicationController
 	  end
 
 	  delete 'users/:id' do
-		 	user = User.find(params[:user][:id])
+			user = User.find(params[:user][:id])
+			user.teams.delete
+			user.characters.delete
 		 	user.destroy
 		 	redirect to "/index"
 	  end
+
   
 end

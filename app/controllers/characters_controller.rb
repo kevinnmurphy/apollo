@@ -49,5 +49,26 @@ class CharactersController < ApplicationController
     end 
         
 
+    private
+
+    # def permission_required
+    #   unless @character = current_user.characters.find_by(id: params[:id])
+    #     flash[:alerts] = ["You don't have permission"]
+    #     redirect to "/characters"
+    #   end
+    # end
+  
+    # def create_or_update_character
+    #   unless @character.valid?
+    #     flash[:alerts] = @character.errors.full_messages
+    #   end
+  
+    #   unless params[:team][:title].empty?
+    #     team = current_user.teams.find_or_create_by(params[:team])
+    #     CharacterTeam.create(team_id: team.id, character_id: @character.id)
+    #   end
+      
+    #   redirect to "/characters/#{@character.id}"
+    # end
 
 end

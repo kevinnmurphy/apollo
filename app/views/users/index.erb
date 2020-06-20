@@ -1,4 +1,21 @@
 <% if logged_in?%>
-    <h2>You are logged in <%= current_user.name %></h2>
-    <a href="/logout">Log out.</a>
+
+    <h1>Welcome, <%= current_user.name %>!</h1>
+    <p>This is your home page where you can view and edit your:</p>
+
+    <p><a href="/teams">Teams</a></p>
+    <p><a href="/characters">Characters</a></p>
+    <p><a href="/equipments">Equipment</a></p>
+
+    <p><a href="/logout">Log Out</a></p>
+
+<form action="/users/<%= current_user.id %>" method="POST">
+    <input type="hidden" value="DELETE" method="POST">
+    <input type="hidden" value="DELETE" method="POST">
+</form>
 <% end%>
+
+
+
+
+

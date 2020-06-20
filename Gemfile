@@ -14,7 +14,10 @@ gem 'tux'
 gem 'rack-flash3'
 gem 'dotenv'
 
-group :test do
+group :development do
+  gem 'tux'
+  gem 'shotgun'
+  gem 'faker'
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'

@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
  #Create, Read, Update, Delete
 
     get '/teams' do
-        @teams = Team.all
+        @teams = current_user.teams
          erb :"teams/index"
     end
 
@@ -42,5 +42,13 @@ class TeamsController < ApplicationController
     end 
         
 
+    private
+
+    # def permission_required
+    #   unless @team = current_user.teams.find_by_id(params[:id])
+    #     flash[:alerts] = ["You don't have permission"]
+    #     redirect to "/teams"
+    #   end 
+    # end
 
 end
