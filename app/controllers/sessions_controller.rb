@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 	def reroute_if_logged_in
 	  if logged_in?
 		flash[:alerts] = ["You are already logged in"]
-		redirect to "/login"
+		erb :"users/index"
 	  end
 	end
   

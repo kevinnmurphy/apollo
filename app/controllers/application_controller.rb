@@ -12,7 +12,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :index
+    #erb :index
+    if logged_in?
+      erb :'users/index'
+    else
+      erb :'sessions/login'
+    end
   end
 
 
