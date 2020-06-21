@@ -1,10 +1,11 @@
 <h2><%=@team.name%></h2>
 <p><%=@team.description%></p>
 <br>
-<%# binding.pry%>
-<%# <% @team.characters.each do |character| %> %>
-<%# <%=character.name%> %>
-<%# <% end%> %>
+
+<% @team.characters.each do |character| %>
+<%= character.name %> - <%= character.klass %>
+<br>
+<% end %>
 
 
 <form action='/teams/<%= @team.id %>/edit' method="GET">

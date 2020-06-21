@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       erb :'users/index'
     else
-      erb :'sessions/login'
+      erb :'index'
     end
   end
 

@@ -10,13 +10,11 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
-gem 'tux'
 gem 'rack-flash3'
 gem 'dotenv'
 
 group :development do
   gem 'tux'
-  gem 'shotgun'
   gem 'faker'
   gem 'rspec'
   gem 'capybara'

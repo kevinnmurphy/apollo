@@ -1,7 +1,7 @@
 class CharactersController < ApplicationController
-    # before do 
-    #     login_required
-    # end
+    before do 
+        login_required
+    end
 
  #7 restful routes 
  #Create, Read, Update, Delete

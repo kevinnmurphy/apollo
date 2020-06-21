@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2020_06_14_153407) do
 
+  create_table "character_teams", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "team_id"
+    t.index ["character_id"], name: "index_character_teams_on_character_id"
+    t.index ["team_id"], name: "index_character_teams_on_team_id"
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "klass"
@@ -26,13 +33,6 @@ ActiveRecord::Schema.define(version: 2020_06_14_153407) do
     t.string "ability"
     t.integer "character_id"
     t.index ["character_id"], name: "index_equips_on_character_id"
-  end
-
-  create_table "team_characters", force: :cascade do |t|
-    t.integer "character_id"
-    t.integer "team_id"
-    t.index ["character_id"], name: "index_team_characters_on_character_id"
-    t.index ["team_id"], name: "index_team_characters_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|

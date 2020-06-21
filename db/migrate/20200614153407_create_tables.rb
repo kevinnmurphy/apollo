@@ -21,7 +21,7 @@ class CreateTables < ActiveRecord::Migration[5.2]
       t.belongs_to :user
     end
 
-    create_table :team_characters do |t|
+    create_table :character_teams do |t|
       t.belongs_to :character
       t.belongs_to :team
     end
