@@ -1,7 +1,4 @@
 class EquipsController < ApplicationController
-  before do 
-    login_required
-  end 
 
   get '/equips' do
       @equips = current_user.equips.all

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		user = User.find_by_name(params[:user][:name])
 		if user && user.authenticate(params[:user][:password])
 			session[:user_id] = user.id
-			redirect to '/'
+			redirect to "/users/#{current_user.id}"
 		else
 			redirect to "/login"
 		end
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 		flash[:alerts] = ["You are already logged in"]
 		erb :"users/index"
 	  else
-		erb :'login'
+		erb :login
 	  end
 	end
   

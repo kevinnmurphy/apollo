@@ -1,7 +1,4 @@
 class TeamsController < ApplicationController
-    # before do 
-    #     login_required
-    # end
  #7 restful routes 
  #Create, Read, Update, Delete
 

@@ -36,10 +36,6 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    def logout
-      session.clear
-    end
-
     #sanitize on patch and post
     def sanitize_input(input)
       input.transform_values! {|v| v.gsub(/[\<\>\/]/, "") }
