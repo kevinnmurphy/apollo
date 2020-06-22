@@ -16,8 +16,9 @@ class TeamsController < ApplicationController
     end
 
     post '/teams' do
+        sanitize_input(params[:team])
         team = current_user.teams.create(params[:team])
-        redirect "/teams/#{params[:id]}"
+        redirect "/teams/#{team.id}"
     end  
 
     get '/teams/:id' do
@@ -31,8 +32,10 @@ class TeamsController < ApplicationController
     end 
     
     patch '/teams/:id' do
-        Team.find(params[:id]).update(params[:team])
-        redirect "teams/#{params[:id]}"
+        sanitize_input(params[:team])
+        team = Team.find(params[:id])
+        team.update(params[:team])
+        redirect "teams/#{team.id}"
     end 
     
     delete '/teams/:id' do

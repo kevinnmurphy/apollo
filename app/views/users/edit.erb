@@ -1,15 +1,13 @@
 <h1>Edit</h1>
 
 <form action="/users/<%= @user.id %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch">
 
-</form>
-
-<form action="/users/<%= @user.id %>" method="POST">
     <label for="name">Username</label>
     <input type="text" name="user[name]" placeholder="<%= @user.name %>">
-    !< placeholder or value -->
+    
     <label for="password">Password</label>
-    <input type="password" name="user[password]" value="passdword">
+    <input type="password" name="user[password]" value="<%= @user.password %>">
 
     <input type="submit" value="submit">
 </form>

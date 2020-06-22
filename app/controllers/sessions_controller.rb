@@ -2,22 +2,21 @@ class SessionsController < ApplicationController
 
 	get "/login" do
 		reroute_if_logged_in
-		erb :'/sessions/login'
     end
     
 	post "/login" do
 		user = User.find_by_name(params[:user][:name])
 		if user && user.authenticate(params[:user][:password])
 			session[:user_id] = user.id
-			erb :"users/index"
+			redirect to '/'
 		else
-			redirect "/login"
+			redirect to "/login"
 		end
     end
 
 	get "/logout" do
 		session.clear
-		redirect "/"
+		redirect to "/"
 	end
 
 	private
@@ -26,6 +25,8 @@ class SessionsController < ApplicationController
 	  if logged_in?
 		flash[:alerts] = ["You are already logged in"]
 		erb :"users/index"
+	  else
+		erb :'login'
 	  end
 	end
   

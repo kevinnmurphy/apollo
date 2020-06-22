@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_153407) do
+ActiveRecord::Schema.define(version: 2020_06_22_011255) do
 
   create_table "character_teams", force: :cascade do |t|
     t.integer "character_id"
@@ -32,7 +32,9 @@ ActiveRecord::Schema.define(version: 2020_06_14_153407) do
     t.string "description"
     t.string "ability"
     t.integer "character_id"
+    t.integer "user_id"
     t.index ["character_id"], name: "index_equips_on_character_id"
+    t.index ["user_id"], name: "index_equips_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|

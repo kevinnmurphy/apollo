@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
     has_many :teams
     has_many :characters
+    has_many :equips
 
     extend Slugifiable::ClassMethods
     include Slugifiable::InstanceMethods

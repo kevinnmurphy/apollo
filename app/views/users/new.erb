@@ -1,10 +1,13 @@
+<% if logged_in? %>
+<h2>Please log out first.</h2>
+<li><a href="/logout" >Log Out</a></li>
+<% else %>
 <h1>Sign Up</h1>
 
 <%= "Must include username, email, and password!" if @user && @user.errors.any? %>
 <%= @error %>
 <form action="/signup" method="POST">
     <label for="name">Username</label>
-    <%# create nested hash for data to mass assign %>
     <input type="text" name="user[name]" placeholder="username" required>
 
     <label for="email">Email</label>
@@ -15,3 +18,5 @@
 
     <input type="submit" value="submit">
 </form>
+<% end %>
+

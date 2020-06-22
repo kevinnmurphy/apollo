@@ -6,31 +6,43 @@ class UsersController < ApplicationController
 
 	post '/signup' do 
 		#sanitize
+		sanitize_input(params[:user])
 		user = User.new(params[:user])
 		if user.save
 			#login
 			session[:user_id] = user.id
 	
-		 	erb :'users/index'
+		 	redirect to "/"
 		else
 		 	@error = user.errors.full_messages.join(" - ")
 		 	erb :"users/new"
 		end
-	  end
+	end
 
-	  patch '/users/:id' do
-		 	user = User.find(params[:user][:id])
-		  	user.update(params[:user])
-		  	redirect to "user/#{user.id}"
-	  end
+	get '/users/:id' do
+        @user = User.find(params[:id])
+        erb :"users/index"
+    end 
 
-	  delete 'users/:id' do
-			user = User.find(params[:user][:id])
-			user.teams.delete
-			user.characters.delete
-		 	user.destroy
-		 	redirect to "/index"
-	  end
+    get '/users/:id/edit' do
+        @user = User.find(params[:id])
+        erb :"users/edit"
+	end
+	
+	patch '/users/:id' do
+		sanitize_input(params[:user])
+		user = User.find(params[:id])
+		user.update(params[:user])
+		redirect to "users/#{user.id}"
+	end
+
+	delete '/users/:id' do
+		user = User.find(params[:user][:id])
+		user.teams.delete
+		user.characters.delete
+		user.destroy
+		redirect to "/index"
+	end
 
   
 end

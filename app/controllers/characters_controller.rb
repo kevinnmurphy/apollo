@@ -7,7 +7,7 @@ class CharactersController < ApplicationController
  #Create, Read, Update, Delete
 
     get '/characters' do
-        @characters = Character.all
+        @characters = current_user.characters.all
          erb :"characters/index"
     end
 
@@ -24,6 +24,7 @@ class CharactersController < ApplicationController
     end 
 
     post '/characters' do
+        sanitize_input(params)
         @team = Team.create(params[:team])
         # if !params[:character].empty?
         #     @team.characters << Character.create(params[:character])
@@ -38,6 +39,7 @@ class CharactersController < ApplicationController
     end 
     
     patch '/characters/:id' do
+        sanitize_input(params)
         Character.find(params[:id]).update(params[:character])
         redirect "characters/#{params[:id]}"
     end 

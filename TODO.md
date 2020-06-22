@@ -1,41 +1,22 @@
 
-#secure inputs to prevent attacks
+#sanitize inputs with the helper using gsub
 attack
     <script>alert(‘Injected!’);</script>
 validate inputs to prevent injections
     .gsub(/[\<\>\/]/, "")
 
-# Put login logout burger in the header bar
-    <div>
-    <% if logged_in?%>
-      <h2>You are logged in <%= current_user.name %></h2>
-      <a href="/logout">Log out.</a>
-    <% else%>
-      <%= <a href="/sessions/login">Login</a> %>
-      <%= <a href="/users/new">SignUp</a> %>
-    <% end%>
-  </div>
-
-  #table for teams/show
-  <h4>Team Members:</h4>
-<ul>
-  <%@team.characters.each do |member|%>
-  <li><%=member.name%></li>
-  <%end%>
-</ul>
 
 #Slugify
 post '/equipments' do
-    binding.pry
       equipment = Equipment.find_or_create_by(params[:equipment])
-      # character = Character.find_or_create_by(params[:character])
-      # teams = Team.find(params[:teams])
-  
-      # equipment.artist = artist
-      # equipment.genres << genres
-      # equipment.save
+       character = Character.find_or_create_by(params[:character])
+       teams = Team.find(params[:teams])
+
+       equipment.artist = artist
+       equipment.genres << genres
+       equipment.save
    
-    #  flash[:message] = "Successfully created equipment."
+      flash[:message] = "Successfully created equipment."
        redirect to "/equipments/#{equipment.slug}"
    end
 
@@ -69,5 +50,3 @@ post '/equipments' do
     @equipment.destroy
     redirect "equipments"
 end 
-
-#check sanitize input helper
