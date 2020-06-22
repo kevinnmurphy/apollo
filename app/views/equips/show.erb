@@ -1,8 +1,13 @@
-<h2><%=@equip.name%></h2>
-<p><%=@equip.description%></p>
-<p><%=@equip.ability%></p>
+<h2>Name: <%=@equip.name%></h2>
+<p>Description: <%=@equip.description%></p>
+<p>Ability: <%=@equip.ability%></p>
+
+
+<form action="/equips/<%= @equip.id %>/edit" method="GET">
+    <input type="submit" value="Edit Equip"/>
+</form>
 
 <form method="post" action="/equips/<%= @equip.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE" />
-  <input type="submit" value="delete" />
+  <input type="submit" value="Delete Equip" />
 </form>

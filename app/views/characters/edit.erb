@@ -4,8 +4,26 @@
   <input type="text" name="character[name]" value="<%= @character.name %>" />
   <br>
   
-  <label for="content">Stats</label>
-  <p><input type="textarea" name="character[content]" value="<%= @character.stats %>" /></p>
+  <label for="klass">Stats</label>
+  <p><input type="textarea" name="character[klass]" value="<%= @character.klass %>" /></p>
 
   <input type="submit" value="submit" />
-</form>
+
+
+  <h4>Select an existing team for your character, or create a new one below:</h4>
+  <h3>Existing Teams</h3>
+  <% @teams.each do |team| %>
+    <input type="checkbox" name="user[team_ids][]" id="<%= team.id %>" value="<%= team.id %>"%><%= team.name %><br>
+      <br>
+  <% end %>
+  <br>
+
+  <h3>New Team</h3>
+  <label>Team Name: </label>
+  <br>
+  <input type="text" name="team[name]">
+  <br>
+
+  <input type="submit" value="Create Team">
+
+  </form>

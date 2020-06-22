@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
- #7 restful routes 
- #Create, Read, Update, Delete
+
+    # before do
+    #     login_required
+    # end
 
     get '/teams' do
         @teams = current_user.teams
@@ -8,7 +10,7 @@ class TeamsController < ApplicationController
     end
 
     get '/teams/new' do
-        @teams = Team.all
+        @teams = current_user.teams.all
         erb :"teams/new"
     end
 
@@ -19,36 +21,40 @@ class TeamsController < ApplicationController
     end  
 
     get '/teams/:id' do
-        @team = Team.find(params[:id])
+        permission_required
+        @team = current_user.teams.find_by_id(params[:id])
         erb :"teams/show"
     end 
 
     get '/teams/:id/edit' do
-        @team = Team.find(params[:id])
+        permission_required
+        @team = current_user.teams.find_by_id(params[:id])
         erb :"teams/edit"
     end 
     
     patch '/teams/:id' do
+        permission_required
         sanitize_input(params[:team])
-        team = Team.find(params[:id])
+        team = current_user.teams.find_by_id(params[:id])
         team.update(params[:team])
         redirect "teams/#{team.id}"
     end 
     
     delete '/teams/:id' do
-        @team = Team.find(params[:id])
-        @team.destroy
+        permission_required
+        team = current_user.teams.find_by_id(params[:id])
+        team.destroy
         redirect "teams"
     end 
         
 
     private
 
-    # def permission_required
-    #   unless @team = current_user.teams.find_by_id(params[:id])
-    #     flash[:alerts] = ["You don't have permission"]
-    #     redirect to "/teams"
-    #   end 
-    # end
+    def permission_required
+      unless @team = current_user.teams.find_by_id(params[:id])
+        flash[:alerts] = ["You don't have permission"]
+        redirect to "/teams"
+      end 
+    end
 
 end

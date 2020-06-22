@@ -1,9 +1,11 @@
 
-#sanitize inputs with the helper using gsub
-attack
-    <script>alert(‘Injected!’);</script>
-validate inputs to prevent injections
-    .gsub(/[\<\>\/]/, "")
+#sanitize all inputs with the helper, even checkboxes
+#checkout sanitize gem
+
+#add team selector to character edit
+#add character selector to equip edit and create
+#add member selector to team edit
+
 
 
 #Slugify

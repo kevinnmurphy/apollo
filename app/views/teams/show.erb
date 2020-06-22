@@ -2,17 +2,19 @@
 <p><%=@team.description%></p>
 <br>
 
+<h4>Members: </h4>
 <% @team.characters.each do |character| %>
 <%= character.name %> - <%= character.klass %>
 <br>
 <% end %>
 
 
-<form action="/teams/<%= @team.id %>/edit" method="GET">
+<form action="/teams/<%=@team.id%>/edit" method="GET">
     <input type="submit" value="Edit Team"/>
 </form>
 
 <form method="post" action="/teams/<%= @team.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE" id="delete_action"/>
-  <input type="submit" value="Delete" />
+  <input type="submit" value="Delete Team" />
 </form>
+

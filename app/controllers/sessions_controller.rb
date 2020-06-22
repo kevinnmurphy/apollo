@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
 			session[:user_id] = user.id
 			redirect to "/users/#{current_user.id}"
 		else
+			flash[:alerts] = ["Wrong email or password. Please try again."]
 			redirect to "/login"
 		end
     end

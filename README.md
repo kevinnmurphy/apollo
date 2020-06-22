@@ -1,15 +1,22 @@
-# Hermes
+# Team Adventure
 
 Welcome to the Team Management App. In this app you can create a team of adventurers and equipment for roleplaying.
 
-
 ## Usage
-Type the blow and follow on screen prompts:
 
+Clone from github repository: https://github.com/qu1xs/apollo
 
+Bundle install to get all required gems
 
-## Development
+Run a shotgun server in the terminal
 
+Navigate to http://localhost:9393/ in a browser
+
+Follow on screen prompts
+
+## Built With
+
+* [Sinatra](http://sinatrarb.com/)
 
 ## Contributing
 
@@ -17,4 +24,9 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/qu1xs/
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+

@@ -20,8 +20,8 @@ class UsersController < ApplicationController
 	end
 
 	get '/users/:id' do
-        @user = User.find(params[:id])
-        erb :"users/index"
+		@user = User.find(params[:id])
+		erb :"users/index"
     end 
 
     get '/users/:id/edit' do

@@ -2,11 +2,11 @@
 <form action="/teams/<%= @team.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
 
-    <label for="name">Name</label>
+    <label for="name">Name: </label>
     <input type="text" name="team[name]" value="<%= @team.name %>" />
     <br>
-    <label for="content">Description</label>
+    <label for="description">Description: </label>
     <input type="textarea" name="team[description]" value="<%= @team.description %>" />
     <br>
-    <input type="submit" value="submit" />
+    <input type="submit" value="Change" />
 </form>

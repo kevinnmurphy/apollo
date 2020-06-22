@@ -1,1 +1,15 @@
-Equipment Edit
+<form action="/equips/<%= @equip.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label for="name">Equip Name</label>
+  <input type="text" name="equip[name]" value="<%= @equip.name %>" />
+    <br>
+  <label for="description">Description: </label>
+  <input type="textarea" name="equip[description]" value="<%= @equip.description %>" />
+    <br>
+  <label for="ability">Ability: </label>
+  <input type="textarea" name="equip[ability]" value="<%= @equip.ability %>" />
+    <br>
+  <input type="submit" value="Edit Equip" />
+
+
+  </form>

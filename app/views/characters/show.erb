@@ -2,7 +2,14 @@
 <p><%=@character.klass%></p>
 <p><%=@character.ability%></p>
 
+<h3>Current Team:</h3>
+<p><%= @character.teams %>
+
+<form action="/characters/<%= @character.id %>/edit" method="GET">
+    <input type="submit" value="Edit Character"/>
+</form>
+
 <form method="post" action="/characters/<%= @character.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE" />
-  <input type="submit" value="delete" />
+  <input type="submit" value="Delete Character" />
 </form>

@@ -2,19 +2,26 @@ class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   use Rack::Flash
 
+  before do
+  end
+
+  not_found do
+    status 404
+    erb :oops
+  end
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    # make hidden session eith env gem
-    set :session_secret, "supersecret"
-    # set :session_secret, "#{ENV['SESSION_SECRET']}"
+    set :session_secret, "#{ENV['SESSION_SECRET']}"
   end
 
   get "/" do
     if logged_in?
       redirect "/users/#{current_user.id}"
     else
+      flash[:alerts] = ["Please login."]
       erb :'index'
     end
   end
@@ -30,7 +37,7 @@ class ApplicationController < Sinatra::Base
   	end
 
     def login_required
-      if !logged_in?
+      if !logged_in? &&
         flash[:alerts] = ["Please log in."]
         redirect to "/"
       end
