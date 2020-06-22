@@ -13,7 +13,7 @@ class EquipsController < ApplicationController
   end
 
   post '/equips' do
-    sanitize_input(params)
+    sanitize_input(params[:equip])
     equip = current_user.equips.find_or_create_by(params[:equip])
     # character = Character.find_or_create_by(params[:character])
     # teams = Team.find(params[:teams])
@@ -38,7 +38,7 @@ class EquipsController < ApplicationController
   end 
 
   patch '/equips/:id' do 
-    sanitize_input(params)
+    sanitize_input(params[:equip])
     equip = current_user.equips.find_by_id(params[:id])
     equip.update(params[:equip])
     equip.teams = current_user.teams.find(params[:teams])

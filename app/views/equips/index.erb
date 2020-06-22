@@ -1,4 +1,6 @@
+<a href="/equips/new">Create An Equip</a>
+
 <%@equips.each do |equip| %>
-<h2><%=equip.name%></h2>
+<a href="/equips/<%=equip.id%>"><h2><%=equip.name%></h2></a>
 <h4><%= equip.character %></h4>
 <%end%>

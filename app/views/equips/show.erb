@@ -1,1 +1,8 @@
-Equipment Show
+<h2><%=@equip.name%></h2>
+<p><%=@equip.description%></p>
+<p><%=@equip.ability%></p>
+
+<form method="post" action="/equips/<%= @equip.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE" />
+  <input type="submit" value="delete" />
+</form>

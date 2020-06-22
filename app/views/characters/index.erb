@@ -1,3 +1,5 @@
+<a href="/characters/new">Create A Character</a>
+
 <%@characters.each do |character| %>
-<h2><%=character.name%></h2>
+<a href="/characters/<%=character.id%>"><h2><%=character.name%></h2></a>
 <%end%>
