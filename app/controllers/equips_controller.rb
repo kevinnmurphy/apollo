@@ -77,7 +77,7 @@ class EquipsController < ApplicationController
     redirect "equips"
   end 
 
-  
+
   private
 
   def permission_required

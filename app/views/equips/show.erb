@@ -2,6 +2,10 @@
 <p>Description: <%=@equip.description%></p>
 <p>Ability: <%=@equip.ability%></p>
 
+<h4>Equipped on: </h4>
+<h4><%= @equip.character.try(:name) %></h4>
+
+
 
 <form action="/equips/<%= @equip.id %>/edit" method="GET">
     <input type="submit" value="Edit Equip"/>

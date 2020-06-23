@@ -2,9 +2,6 @@ class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   use Rack::Flash
 
-  before do
-  end
-
   not_found do
     status 404
     erb :oops

@@ -1,9 +1,5 @@
 #checkout sanitize gem
 
-#add team selector to character edit
-#add character selector to equip edit and create
-#add member selector to team edit
-
 #Slugify
 post '/equipments' do
       equipment = Equipment.find_or_create_by(params[:equipment])

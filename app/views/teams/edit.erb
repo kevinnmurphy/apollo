@@ -8,5 +8,12 @@
     <label for="description">Description: </label>
     <input type="textarea" name="team[description]" value="<%= @team.description %>" />
     <br>
+
+    <h3>Existing Characters</h3>
+    <% @characters.each do |character| %>
+      <input type="checkbox" name="team[character_ids][]" id="<%= character.id %>" value="<%= character.id %>" <%='checked' if @team.characters.include?(character) %>><%= character.name %>
+      <br>
+    <% end %>
+    <br>
     <input type="submit" value="Change" />
 </form>
