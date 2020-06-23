@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 	end
 
 	post '/signup' do 
-		#sanitize
 		sanitize_input(params[:user])
 		user = User.new(params[:user])
 		if user.save
@@ -20,29 +19,45 @@ class UsersController < ApplicationController
 	end
 
 	get '/users/:id' do
-		@user = User.find(params[:id])
+		login_required
+		permission_required
 		erb :"users/index"
     end 
 
-    get '/users/:id/edit' do
-        @user = User.find(params[:id])
+	get '/users/:id/edit' do
+		login_required
+		permission_required
         erb :"users/edit"
 	end
 	
 	patch '/users/:id' do
+		login_required
+		permission_required
 		sanitize_input(params[:user])
-		user = User.find(params[:id])
-		user.update(params[:user])
-		redirect to "users/#{user.id}"
+		if !params[:user][:name].blank?
+			current_user.update(params[:user])
+			flash[:message] = "Successfully updated user."
+		end
+		redirect to "users/#{current_user.id}"
 	end
 
 	delete '/users/:id' do
-		user = User.find(params[:user][:id])
-		user.teams.delete
-		user.characters.delete
-		user.destroy
+		login_required
+		permission_required
+		# current_user.teams.try.delete
+		# current_user.characters.try.delete
+		# current_user.equips.try.delete
+		current_user.destroy
 		redirect to "/index"
 	end
 
+
+	
+	def permission_required
+		unless @user = current_user
+		  flash[:alerts] = ["You don't have permission"]
+		  redirect to "/index"
+		end 
+	  end
   
 end

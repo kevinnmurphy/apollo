@@ -42,7 +42,12 @@ class TeamsController < ApplicationController
         permission_required
         sanitize_input(params[:team])
         team = current_user.teams.find_by_id(params[:id])
-        team.update(params[:team])
+        if !params[:team][:name].blank?
+            team.update(params[:team])
+            flash[:message] = "Successfully updated team."
+        else 
+            redirect to "/characters/#{team.id}/edit"
+        end
         redirect "teams/#{team.id}"
     end 
     

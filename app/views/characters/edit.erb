@@ -1,11 +1,25 @@
 <form action="/characters/<%= @character.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label for="name">Name: </label>
-  <input type="text" name="character[name]" value="<%= @character.name %>" />
+  <input type="text" name="character[name]" value="<%= @character.name %>" placeholder="<%= @character.name %>"/>
   <br>
   
-  <label for="klass">Class: </label>
-  <input type="textarea" name="character[klass]" value="<%= @character.klass %>" />
+  <label for="klass">Choose a Class:</label>
+  <input list="klass-flavors" id="klass-choice" name="character[klass]" value="<%= @character.klass %>" placeholder="<%= @character.klass %>"  />
+  <datalist id="klass-flavors">
+      <option value="Barbarian">
+      <option value="Bard">
+      <option value="Cleric">
+      <option value="Druid">
+      <option value="Fighter">
+      <option value="Monk">
+      <option value="Paladin">
+      <option value="Ranger">
+      <option value="Rogue">
+      <option value="Sorcerer">
+      <option value="Warlock">
+      <option value="Wizard">
+  </datalist>
   <br>
   <label for="ability">Ability: </label>
   <input type="text" name="character[ability]" value="<%= @character.ability %>" />

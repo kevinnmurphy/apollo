@@ -4,25 +4,6 @@
 #add character selector to equip edit and create
 #add member selector to team edit
 
-#use this selector for klass
-  <label for="klass">Choose a Class:</label>
-  <input list="klass-flavors" id="klass-choice" name="character[klass]" />
-
-  <datalist id="klass-flavors">
-      <option value="Barbarian">
-      <option value="Bard">
-      <option value="Cleric">
-      <option value="Druid">
-      <option value="Fighter">
-      <option value="Monk">
-      <option value="Paladin">
-      <option value="Ranger">
-      <option value="Rogue">
-      <option value="Sorcerer">
-      <option value="Warlock">
-      <option value="Wizard">
-  </datalist>
-
 #Slugify
 post '/equipments' do
       equipment = Equipment.find_or_create_by(params[:equipment])

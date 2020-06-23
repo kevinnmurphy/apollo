@@ -18,16 +18,25 @@ class CharactersController < ApplicationController
     end
     
     post '/characters' do
+
         login_required
         sanitize_input(params[:character])
-        @team = current_user.teams.find_or_create_by(params[:team])
+        team = current_user.teams
         character = current_user.characters
-        character.update(params[:character])
-        # if !params[:character].empty?
-        #     @team.characters << character
-        # end
-        redirect "/characters/#{character.id}"
-        #redirect "/characters"
+
+        if !params[:character][:name].blank?
+            character.create(params[:character])
+            if !params[:team].empty?
+                # team.find_or_create_by(params[:team])
+                # team.characters << character
+                # team.save
+            end
+        end
+
+        #id is not working
+        #redirect "/characters/#{character.id}"
+        #{@character.id}
+        redirect "/characters"
     end
 
     get '/characters/:id' do
@@ -50,8 +59,21 @@ class CharactersController < ApplicationController
         sanitize_input(params[:character])
         @team = current_user.teams.find_or_create_by(params[:team])
         character = current_user.characters.find_by_id(params[:id])
-        character.update(params[:character])
-        redirect "characters/#{character.id}"
+        # blank data protection
+        # if @character.update(params[:character])
+        #     redirect to "/characters"
+        # else 
+        #     redirect to "/characters/#{@character.id}/edit"
+        # end
+
+        if !params[:character][:name].blank?
+            character.update(params[:character])  
+            flash[:message] = "Successfully updated character."
+        else 
+            redirect to "/characters/#{character.id}/edit"
+        end
+
+        redirect to "/characters/#{character.id}"
     end 
     
     delete '/characters/:id' do
