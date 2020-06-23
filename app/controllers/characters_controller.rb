@@ -5,49 +5,58 @@ class CharactersController < ApplicationController
     # end
 
     get '/characters' do
+        login_required
         @characters = current_user.characters.all
          erb :"characters/index"
     end
 
     get '/characters/new' do
+        login_required
         @teams = current_user.teams.all
         @characters = current_user.characters.all
         erb :"characters/new"
     end
     
     post '/characters' do
+        login_required
         sanitize_input(params[:character])
         @team = current_user.teams.find_or_create_by(params[:team])
-        character = current_user.characters.create(params[:character])
-        if !params[:character].empty?
-            @team.characters << character
-        end
+        character = current_user.characters
+        character.update(params[:character])
+        # if !params[:character].empty?
+        #     @team.characters << character
+        # end
         redirect "/characters/#{character.id}"
         #redirect "/characters"
     end
 
     get '/characters/:id' do
+        login_required
+        permission_required
         @character = current_user.characters.find(params[:id])
-        @team = current_user.teams.create(params[:team])
-        binding.pry
         erb :"characters/show"
     end 
 
     get '/characters/:id/edit' do
-            permission_required
-            @character = current_user.characters.find(params[:id])
-            erb :"characters/edit"
+        login_required
+        permission_required
+        @character = current_user.characters.find_by_id(params[:id])
+        erb :"characters/edit"
     end 
     
     patch '/characters/:id' do
+        login_required
+        permission_required
         sanitize_input(params[:character])
         @team = current_user.teams.find_or_create_by(params[:team])
-        character = current_user.characters.find_by(params[:id])
+        character = current_user.characters.find_by_id(params[:id])
         character.update(params[:character])
-        redirect "characters/#{params[:id]}"
+        redirect "characters/#{character.id}"
     end 
     
     delete '/characters/:id' do
+        login_required
+        permission_required
         @character = current_user.characters.find(params[:id])
         @character.destroy
         redirect "characters"

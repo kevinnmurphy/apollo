@@ -6,8 +6,24 @@
   <label for="name">Character Name: </label>
   <input type="text" id="character_name" name="character[name]" />
   <br>
-  <label for="klass">Class: </label>
-  <input type="text" name="character[klass]" />
+  <label for="klass">Choose a Class:</label>
+  <input list="klass-flavors" id="klass-choice" name="character[klass]" />
+
+  <datalist id="klass-flavors">
+      <option value="Barbarian">
+      <option value="Bard">
+      <option value="Cleric">
+      <option value="Druid">
+      <option value="Fighter">
+      <option value="Monk">
+      <option value="Paladin">
+      <option value="Ranger">
+      <option value="Rogue">
+      <option value="Sorcerer">
+      <option value="Warlock">
+      <option value="Wizard">
+  </datalist>
+
   <br>
   <label for="ability">Ability: </label>
   <input type="text" name="character[ability]" />

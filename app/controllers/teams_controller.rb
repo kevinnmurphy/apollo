@@ -5,34 +5,40 @@ class TeamsController < ApplicationController
     # end
 
     get '/teams' do
+        login_required
         @teams = current_user.teams
          erb :"teams/index"
     end
 
     get '/teams/new' do
+        login_required
         @teams = current_user.teams.all
         erb :"teams/new"
     end
 
     post '/teams' do
+        login_required
         sanitize_input(params[:team])
         team = current_user.teams.create(params[:team])
         redirect "/teams/#{team.id}"
     end  
 
     get '/teams/:id' do
+        login_required
         permission_required
         @team = current_user.teams.find_by_id(params[:id])
         erb :"teams/show"
     end 
 
     get '/teams/:id/edit' do
+        login_required
         permission_required
         @team = current_user.teams.find_by_id(params[:id])
         erb :"teams/edit"
     end 
     
     patch '/teams/:id' do
+        login_required
         permission_required
         sanitize_input(params[:team])
         team = current_user.teams.find_by_id(params[:id])
@@ -41,6 +47,7 @@ class TeamsController < ApplicationController
     end 
     
     delete '/teams/:id' do
+        login_required
         permission_required
         team = current_user.teams.find_by_id(params[:id])
         team.destroy

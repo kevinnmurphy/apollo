@@ -1,22 +1,19 @@
 <form action="/characters/<%= @character.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <label for="name">Character Name</label>
+  <label for="name">Name: </label>
   <input type="text" name="character[name]" value="<%= @character.name %>" />
   <br>
   
-  <label for="klass">Stats</label>
-  <p><input type="textarea" name="character[klass]" value="<%= @character.klass %>" /></p>
-
-  <input type="submit" value="submit" />
-
-
+  <label for="klass">Class: </label>
+  <input type="textarea" name="character[klass]" value="<%= @character.klass %>" />
+  <br>
+  <label for="ability">Ability: </label>
+  <input type="text" name="character[ability]" value="<%= @character.ability %>" />
+  <br>
+  <input type="submit" value="Change" />
+  <br>
   <h4>Select an existing team for your character, or create a new one below:</h4>
   <h3>Existing Teams</h3>
-  <% @teams.each do |team| %>
-    <input type="checkbox" name="user[team_ids][]" id="<%= team.id %>" value="<%= team.id %>"%><%= team.name %><br>
-      <br>
-  <% end %>
-  <br>
 
   <h3>New Team</h3>
   <label>Team Name: </label>

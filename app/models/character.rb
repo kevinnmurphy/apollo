@@ -7,7 +7,7 @@ class Character < ActiveRecord::Base
     
     validates :name, presence: true
     validates :name, uniqueness: true
-    # validates :class, presence: true
-    # validates :ability, presence: true
+    validates :class, presence: true
+    validates :ability, presence: true
 
 end
