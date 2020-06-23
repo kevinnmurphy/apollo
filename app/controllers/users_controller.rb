@@ -44,9 +44,9 @@ class UsersController < ApplicationController
 	delete '/users/:id' do
 		login_required
 		permission_required
-		# current_user.teams.try.delete
-		# current_user.characters.try.delete
-		# current_user.equips.try.delete
+		current_user.teams.try.delete
+		current_user.characters.try.delete
+		current_user.equips.try.delete
 		current_user.destroy
 		redirect to "/index"
 	end
