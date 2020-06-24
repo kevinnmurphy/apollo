@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
 
   not_found do
     status 404
-    erb :oops
+    erb :error
   end
 
   configure do
@@ -42,6 +42,7 @@ class ApplicationController < Sinatra::Base
 
     #sanitize on patch and post
     def sanitize_input(input)
+      #check for string or array
       input.transform_values! {|v| v.gsub(/[\<\>\/]/, "") }
     end
   end
