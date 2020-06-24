@@ -11,5 +11,13 @@
   <label for="ability">Ability: </label>
   <input type="text" name="equip[ability]" />
   <br>
-  <input type="submit" value="Create Equip" />
+  <h4>Select a character for your equip below:</h4>
+
+  <label for="character">Choose a Character:</label>
+  <select id="character-names" name="equip[character_id]">
+    <% @characters.each do |character| %>
+      <option value="<%= character.id %>"><%= character.name %></option>
+    <% end%>
+  </select>
+  <input type="submit" value="Create" />
 </form>

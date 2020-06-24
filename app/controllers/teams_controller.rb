@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
 
     get '/teams/new' do
         login_required
-        @teams = current_user.teams.all
+        @teams = current_user.teams
         erb :"teams/new"
     end
 

@@ -13,7 +13,7 @@ class EquipsController < ApplicationController
   get '/equips/new' do
     login_required
     @equips = current_user.equips
-    @teams = current_user.teams
+    @characters = current_user.characters
     erb :"equips/new"
   end
 
@@ -26,10 +26,6 @@ class EquipsController < ApplicationController
     else
       redirect to "/equips/new"
     end
-    
-    # character = current_user.characters.find_or_create_by(params[:character])
-    # character.equips << equip
-    # character.save
   
     redirect to "/equips/#{equip.id}"
   end
@@ -55,16 +51,12 @@ class EquipsController < ApplicationController
     login_required
     permission_required
     sanitize_input(params[:equip])
+    @characters = current_user.characters.find_or_create_by(params[:character])
     equip = current_user.equips.find_by_id(params[:id])
     if !params[:equip][:name].blank?
       equip.update(params[:equip])
       flash[:message] = "Successfully updated equip."
     end
-
-    @characters = current_user.characters.find_or_create_by(params[:character])
-    # if !params[:equip].empty?
-    #     @character.equips << equip
-    # end
 
     redirect to "/equips/#{equip.id}"
   end

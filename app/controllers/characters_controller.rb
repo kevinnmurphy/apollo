@@ -12,25 +12,20 @@ class CharactersController < ApplicationController
 
     get '/characters/new' do
         login_required
-        @teams = current_user.teams.all
-        @characters = current_user.characters.all
+        @teams = current_user.teams
+        @character = current_user.characters
         erb :"characters/new"
     end
     
     post '/characters' do
 
         login_required
-        sanitize_input(params[:character])
-        team = current_user.teams
+        # sanitize_input(params[:character])
+        @teams = current_user.teams
         character = current_user.characters
 
         if !params[:character][:name].blank?
             character.create(params[:character])
-            if !params[:team].empty?
-                # team.find_or_create_by(params[:team])
-                # team.characters << character
-                # team.save
-            end
         end
 
         #id is not working
@@ -49,6 +44,7 @@ class CharactersController < ApplicationController
     get '/characters/:id/edit' do
         login_required
         permission_required
+        @teams = current_user.teams
         @character = current_user.characters.find_by_id(params[:id])
         erb :"characters/edit"
     end 
@@ -56,8 +52,7 @@ class CharactersController < ApplicationController
     patch '/characters/:id' do
         login_required
         permission_required
-        sanitize_input(params[:character])
-        @team = current_user.teams.find_or_create_by(params[:team])
+        # sanitize_input(params[:character])
         character = current_user.characters.find_by_id(params[:id])
         # blank data protection
         # if @character.update(params[:character])

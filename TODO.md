@@ -1,4 +1,9 @@
 #checkout sanitize gem
+#fix sanitize method to work with array also, maybe use conditional
+
+#add index and formatting for equips on characters to show multiple
+
+#add equipment select on character, maybe search bar
 
 #Slugify
 post '/equipments' do
