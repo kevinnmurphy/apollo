@@ -1,5 +1,8 @@
+<h2>Edit Equip</h2>
+
 <form action="/equips/<%= @equip.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
+
   <label for="name">Equip Name</label>
   <input type="text" name="equip[name]" value="<%= @equip.name %>" placeholder="<%= @equip.name %>"/>
     <br>
@@ -9,6 +12,7 @@
   <label for="ability">Ability: </label>
   <input type="textarea" name="equip[ability]" value="<%= @equip.ability %>" placeholder="<%= @equip.ability %>"/>
     <br>
+ 
   <h4>Select a character for your equip below:</h4>
 
   <label for="character">Choose a Character:</label>
@@ -17,7 +21,7 @@
       <option value="<%= character.id %>"><%= character.name %></option>
     <% end%>
   </select>
-
+  <br>
   <br>
   <input type="submit" value="Change" />
   </form>

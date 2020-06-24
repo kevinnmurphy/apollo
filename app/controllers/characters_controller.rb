@@ -13,6 +13,7 @@ class CharactersController < ApplicationController
     get '/characters/new' do
         login_required
         @teams = current_user.teams
+        @equips = current_user.equips
         @character = current_user.characters
         erb :"characters/new"
     end
@@ -45,6 +46,7 @@ class CharactersController < ApplicationController
         login_required
         permission_required
         @teams = current_user.teams
+        @equips = current_user.equips
         @character = current_user.characters.find_by_id(params[:id])
         erb :"characters/edit"
     end 

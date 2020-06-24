@@ -1,6 +1,6 @@
 <form action="/characters/<%= @character.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <h3>Character Properties</h3>
+  <h2>Character Edit</h2>
   <label for="name">Name: </label>
   <input type="text" name="character[name]" value="<%= @character.name %>" placeholder="<%= @character.name %>"/>
   <br>
@@ -32,6 +32,12 @@
       <input type="checkbox" name="character[team_ids][]" id="<%= team.id %>" value="<%= team.id %>" <%='checked' if @character.teams.include?(team) %>><%= team.name %>
       <br>
     <% end %>
+  <br>
+  <label for="equip"><h4>Choose an Equip:</h3></label>
+  <select id="equip-names" name="character[equip_id]">
+    <% @equips.each do |equip| %>
+      <option value="<%= equip.id %>"><%= equip.name %></option>
+    <% end%>
   <input type="submit" value="Change">
 
   </form>
