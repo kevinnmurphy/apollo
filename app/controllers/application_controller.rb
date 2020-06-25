@@ -40,10 +40,18 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    #sanitize on patch and post
-    def sanitize_input(input)
-      #check for string or array
-      input.transform_values! {|v| v.gsub(/[\<\>\/]/, "") }
+    def sanitize_input(params)
+      params.each_with_object({}) do |(k, v), new|
+        if v.is_a? String
+          new[k] = v.gsub(/[\<\>\/]/, "")
+        elsif v.is_a? Array
+          sanitized_array = v.map! { |arr_v| arr_v.gsub(/[\<\>\/]/, "") }
+          new[k] = sanitized_array
+        else
+          sanitized_hash = v.transform_values! { |hash_v| hash_v.gsub(/[\<\>\/]/, "") }
+          new[k] = sanitized_hash
+        end
+      end
     end
   end
 

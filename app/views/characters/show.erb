@@ -2,18 +2,17 @@
 <h4>Class: <%=@character.klass%></h4>
 <p>Ability: <%=@character.ability%></p>
 
+<h4>Current Teams:</h4>
+<% @character.teams.each do |team| %>
+<%= team.name  %>
+<br>
+<% end %>
+<br>
 <h4>Current Equip:</h4>
 <% @character.equips.each do |equip| %>
 <%= equip.name %>
 <br>
 <% end %>
-<br>
-<h4>Current Team:</h4>
-<% @character.teams.each do |team| %>
-<%= team.name  %>
-<% end %>
-
-<br>
 <br>
 <form action="/characters/<%= @character.id %>/edit" method="GET">
     <input type="submit" value="Edit Character"/>

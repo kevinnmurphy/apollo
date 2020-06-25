@@ -12,13 +12,13 @@
   <label for="ability">Ability: </label>
   <input type="textarea" name="equip[ability]" value="<%= @equip.ability %>" placeholder="<%= @equip.ability %>"/>
     <br>
+    <br>
  
-  <h4>Select a character for your equip below:</h4>
-
-  <label for="character">Choose a Character:</label>
+  <label for="character"><h4>Equip on a character:</h4></label>
   <select id="character-names" name="equip[character_id]">
+    <option value="" selected disabled hidden>Pick Character</option>
     <% @characters.each do |character| %>
-      <option value="<%= character.id %>"><%= character.name %></option>
+      <option value="<%= character.id %>" <%="selected" if @equip.character == character%>><%= character.name %></option>
     <% end%>
   </select>
   <br>

@@ -41,7 +41,7 @@ class TeamsController < ApplicationController
     patch '/teams/:id' do
         login_required
         permission_required
-        #sanitize_input(params[:team])
+        sanitize_input(params[:team])
         team = current_user.teams.find_by_id(params[:id])
         if !params[:team][:name].blank?
             team.update(params[:team])

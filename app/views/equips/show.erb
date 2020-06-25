@@ -3,8 +3,7 @@
 <p>Ability: <%=@equip.ability%></p>
 
 <h4>Equipped on: </h4>
-<h4><%= @equip.character.try(:name) %></h4>
-
+<p><%= @equip.character.try(:name) %></p>
 
 
 <form action="/equips/<%= @equip.id %>/edit" method="GET">

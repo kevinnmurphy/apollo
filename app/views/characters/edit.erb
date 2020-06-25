@@ -26,18 +26,19 @@
   <input type="text" name="character[ability]" value="<%= @character.ability %>" />
   <br>
   <br>
-  <h4>Select an existing team for your character:</h4>
-  <br>
-      <% @teams.each do |team| %>
+  <h4>Select Teams:</h4>
+    <% @teams.each do |team| %>
       <input type="checkbox" name="character[team_ids][]" id="<%= team.id %>" value="<%= team.id %>" <%='checked' if @character.teams.include?(team) %>><%= team.name %>
       <br>
     <% end %>
   <br>
-  <label for="equip"><h4>Choose an Equip:</h3></label>
-  <select id="equip-names" name="character[equip_id]">
+  <label for="equip"><h4>Choose Equips:</h3></label>
     <% @equips.each do |equip| %>
-      <option value="<%= equip.id %>"><%= equip.name %></option>
-    <% end%>
+      <input type="checkbox" name="character[equip_ids][]" id="<%= equip.id %>" value="<%= equip.id %>" <%='checked' if @character.equips.include?(equip) %>><%= equip.name %>
+      <br>
+    <% end %>
+    <br>
+    <br>
   <input type="submit" value="Change">
 
   </form>

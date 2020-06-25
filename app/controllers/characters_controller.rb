@@ -21,7 +21,7 @@ class CharactersController < ApplicationController
     post '/characters' do
 
         login_required
-        # sanitize_input(params[:character])
+        sanitize_input(params)
         @teams = current_user.teams
         character = current_user.characters
 
@@ -54,15 +54,8 @@ class CharactersController < ApplicationController
     patch '/characters/:id' do
         login_required
         permission_required
-        # sanitize_input(params[:character])
+        sanitize_input(params[:character])
         character = current_user.characters.find_by_id(params[:id])
-        # blank data protection
-        # if @character.update(params[:character])
-        #     redirect to "/characters"
-        # else 
-        #     redirect to "/characters/#{@character.id}/edit"
-        # end
-
         if !params[:character][:name].blank?
             character.update(params[:character])  
             flash[:message] = "Successfully updated character."
