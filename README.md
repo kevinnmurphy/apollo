@@ -8,7 +8,9 @@ Clone from github repository: https://github.com/qu1xs/apollo
 
 Bundle install to get all required gems
 
-Run a shotgun server in the terminal
+Run rake db:migrate
+
+Run shotgun
 
 Navigate to http://localhost:9393/ in a browser
 
