@@ -1,13 +1,14 @@
 <% if logged_in?%>
 
-    <h1>Welcome, <%= current_user.name %>!</h1>
+    <h2>Welcome, <%= current_user.name %>!</h2>
     <p>This is your home page where you can view and edit your:</p>
 
-    <p><a href="/teams">Teams</a></p>
-    <p><a href="/characters">Characters</a></p>
-    <p><a href="/equips">Equipment</a></p>
+    <h4><a href="/teams">Teams</a></h4>
+    <h4><a href="/characters">Characters</a></h4>
+    <h4><a href="/equips">Equipment</a></h4>
 
-    <p><a href="/users/<%= current_user.id %>/edit">Profile</a></p>
+    <h4><a href="/users/<%= current_user.id %>/edit">Profile</a></h4>
+    <br>
 
 <% end%>
 

@@ -6,8 +6,8 @@ class EquipsController < ApplicationController
 
   get '/equips' do
     login_required
-      @equips = current_user.equips
-      erb :"/equips/index"
+    @equips = current_user.equips.search(params[:query]).sort_by_name
+    erb :"/equips/index"
   end
 
   get '/equips/new' do
@@ -33,7 +33,7 @@ class EquipsController < ApplicationController
   get '/equips/:id' do
     login_required
     permission_required
-    @character = current_user.characters.all
+    @character = current_user.characters
     @equip = current_user.equips.find_by_id(params[:id])
     erb :"/equips/show"
   end
@@ -43,7 +43,7 @@ class EquipsController < ApplicationController
     permission_required
     @equip = current_user.equips.find_by_id(params[:id])
     @characters = current_user.characters
-    @teams = current_user.teams.all
+    @teams = current_user.teams
     erb :"/equips/edit"
   end 
 

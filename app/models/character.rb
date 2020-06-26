@@ -7,7 +7,21 @@ class Character < ActiveRecord::Base
     
     validates :name, presence: true
     validates :name, uniqueness: true
-    validates :class, presence: true
+    validates :klass, presence: true
     validates :ability, presence: true
+
+    # extend Search::ClassMethods
+
+    def self.search(query)
+        if !!query
+            self.where("name LIKE ?", "%#{query}%")
+        else
+            self.all
+        end
+    end
+
+    def self.sort_by_name
+        self.order(name: :asc)
+    end
 
 end

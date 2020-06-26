@@ -7,4 +7,6 @@ class Team < ActiveRecord::Base
     validates :name, uniqueness: true
     validates :description, presence: true
 
+    extend Search::ClassMethods
+
 end

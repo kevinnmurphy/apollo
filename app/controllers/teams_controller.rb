@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
 
     get '/teams' do
         login_required
-        @teams = current_user.teams
+        @teams = current_user.teams.search(params[:query]).sort_by_name
          erb :"teams/index"
     end
 

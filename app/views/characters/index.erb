@@ -1,4 +1,9 @@
-<a href="/characters/new">Create A Character</a>
+<a href="/characters/new" class="create">Create A Character</a>
+
+<form action="/characters" method="GET">
+<input name="query" type="text">
+<input type="submit" value="Search" />
+</form>
 
 <%@characters.each do |character| %>
 <a href="/characters/<%=character.id%>"><h2><%=character.name%></h2></a>

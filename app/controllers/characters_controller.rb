@@ -6,7 +6,7 @@ class CharactersController < ApplicationController
 
     get '/characters' do
         login_required
-        @characters = current_user.characters.all
+        @characters = current_user.characters.search(params[:query]).sort_by_name
          erb :"characters/index"
     end
 

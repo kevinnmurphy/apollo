@@ -6,4 +6,7 @@ class Equip < ActiveRecord::Base
     validates :name, uniqueness: true
     validates :description, presence: true
     validates :ability, presence: true
+
+    extend Search::ClassMethods
+
 end

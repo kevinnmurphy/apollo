@@ -1,4 +1,9 @@
-<a href="/equips/new">Create An Equip</a>
+<a href="/equips/new" class="create">Create An Equip</a>
+
+<form action="/equips" method="GET">
+<input name="query" type="text">
+<input type="submit" value="Search" />
+</form>
 
 <%@equips.each do |equip| %>
     <a href="/equips/<%=equip.id%>"><h2><%=equip.name%></h2></a>
