@@ -30,8 +30,7 @@ class CharactersController < ApplicationController
         end
 
         #id is not working
-        #redirect "/characters/#{character.id}"
-        #{@character.id}
+        # redirect "/characters/#{character.id}"
         redirect "/characters"
     end
 

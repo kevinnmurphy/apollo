@@ -12,5 +12,6 @@ ActiveRecord::Base.establish_connection(
 require 'rack-flash'
 
 require './app/controllers/application_controller'
+require_relative "../app/models/concerns/searchable.rb"
 require_all 'app'
 

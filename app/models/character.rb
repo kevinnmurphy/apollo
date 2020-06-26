@@ -1,3 +1,4 @@
+require_relative './concerns/searchable.rb'
 class Character < ActiveRecord::Base
     belongs_to :user
     has_many :equips
@@ -10,18 +11,6 @@ class Character < ActiveRecord::Base
     validates :klass, presence: true
     validates :ability, presence: true
 
-    # extend Search::ClassMethods
-
-    def self.search(query)
-        if !!query
-            self.where("name LIKE ?", "%#{query}%")
-        else
-            self.all
-        end
-    end
-
-    def self.sort_by_name
-        self.order(name: :asc)
-    end
+    extend Search::ClassMethods
 
 end
