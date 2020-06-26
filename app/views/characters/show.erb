@@ -22,3 +22,16 @@
   <input id="hidden" type="hidden" name="_method" value="DELETE" />
   <input type="submit" value="Delete Character" />
 </form>
+<br>
+<form action="/characters/<%= @character.id %>/equips" method="POST">
+  <label for="name">Equipment Name: </label>
+  <input type="text" name="equip[name]" required>
+  <br>
+  <label for="description">Description: </label>
+  <input type="textarea" name="equip[description]" />
+  <br>
+  <label for="ability">Ability: </label>
+  <input type="text" name="equip[ability]" />
+  <br>
+  <input type="submit" value="Create" />
+</form>

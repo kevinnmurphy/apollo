@@ -4,6 +4,15 @@ class EquipsController < ApplicationController
   #   login_required
   # end
 
+  post '/characters/:character_id/equips' do
+    login_required
+    equip = current_user.equips.new(params[:equip])
+    equip.character_id = params[:character_id]
+    equip.save
+
+    redirect "characters/#{params[:character_id]}"
+  end
+
   get '/equips' do
     login_required
     @equips = current_user.equips.search(params[:query]).sort_by_name
