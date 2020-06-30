@@ -5,13 +5,18 @@ gem 'activerecord', "~> 5.2", :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
-gem 'sqlite3'
 gem 'bcrypt'
 gem 'rack-flash3'
 gem 'dotenv'
-gem 'puma'
+gem 'foreman'
+
+group :production do
+  gem 'pg', '~> 0.20'
+end
 
 group :development do
+  gem 'sqlite3'
+  gem 'puma'
   gem 'tux'
   gem 'shotgun'
   gem 'pry'
