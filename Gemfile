@@ -1,18 +1,32 @@
 source 'http://rubygems.org'
 
+# gem 'sinatra'
+# gem 'activerecord', "~> 5.2", :require => 'active_record'
+# gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+# gem 'rake'
+# gem 'require_all'
+# gem 'bcrypt'
+# gem 'rack-flash3'
+# gem 'dotenv'
+# gem 'foreman'
+
+# group :production do
+#   gem 'pg', '~> 0.20'
+#   gem 'rails_12factor'
+# end
+
 gem 'sinatra'
-gem 'activerecord', "~> 5.2", :require => 'active_record'
+gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
+gem 'thin'
 gem 'bcrypt'
-gem 'rack-flash3'
-gem 'dotenv'
 gem 'foreman'
+gem 'dotenv'
 
 group :production do
   gem 'pg', '~> 0.20'
-  gem 'rails_12factor'
 end
 
 group :development do
