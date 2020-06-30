@@ -9,22 +9,25 @@ gem 'bcrypt'
 gem 'rack-flash3'
 gem 'dotenv'
 gem 'foreman'
+gem 'thin'
 
 group :production do
   gem 'pg', '~> 0.20'
   gem 'rails_12factor'
 end
 
-group :development do
-  gem 'sqlite3'
-  # gem 'puma'
-  gem 'thin'
-  gem 'tux'
-  gem 'shotgun'
-  gem 'pry'
-  gem 'faker'
+group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+end
+
+group :development do
+  # gem 'puma'
+  gem 'pry'
+  gem 'shotgun'
+  gem 'tux'
+  gem 'sqlite3'
+  gem 'faker'
 end
