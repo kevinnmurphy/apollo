@@ -68,6 +68,11 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     rake (13.0.1)
     regexp_parser (1.7.1)
     require_all (3.0.0)
@@ -132,6 +137,7 @@ DEPENDENCIES
   puma
   rack-flash3
   rack-test
+  rails_12factor
   rake
   require_all
   rspec
